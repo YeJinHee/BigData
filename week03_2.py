@@ -2,12 +2,15 @@ import numpy as np
 import tkinter as tk  # Built in GUI
 from tkinter import messagebox  # pop-up window
 
+def press_enter_key(ev): #바인드는 ev 해 줘야 함
+    click_button()
+    messagebox.showinfo('x, y', f"({ev.x}, {ev.y})")
 
 def create_2d_array(row, col):
     return np.random.randint(1, 101, size=(row, col))
 
 
-def click_button(event): #event라고 추가적으로 해 줘야 엔터 먹음
+def click_button():
     try:
         r, c = map(int, en_row_column.get().split())  # spacebar
         matrix = create_2d_array(r, c)
@@ -28,7 +31,7 @@ en_row_column = tk.Entry()
 btn_click = tk.Button(text="click me!", command=click_button)
 
 #엔터 키 바인딩
-en_row_column.bind("<Return>", click_button)
+en_row_column.bind("<Return>", press_enter_key)
 #btn_click.bind가 안 되는 이유 : 버튼 클릭 쪽이어서?
 
 # widget layout
