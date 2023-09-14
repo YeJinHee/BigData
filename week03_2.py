@@ -2,26 +2,23 @@ import numpy as np
 import tkinter as tk  # Built in GUI
 from tkinter import messagebox  # pop-up window
 
-def press_enter_key(ev): #바인드는 ev 해 줘야 함
-    click_button()
-    messagebox.showinfo('x, y', f"({ev.x}, {ev.y})")
 
-def create_2d_array(row, col):
-    return np.random.randint(1, 101, size=(row, col))
+# def press_enter_key(ev):
+#     click_button()
+#     messagebox.showinfo('x, y', f"({ev.x}, {ev.y})")
 
 
-def click_button():
+def click_button(*args): #가변매개변수 사용한 것
     try:
-        r, c = map(int, en_row_column.get().split())  # spacebar
-        matrix = create_2d_array(r, c)
+        r, c = map(int, en_row_column.get().split())
+        matrix = np.random.randint(1, 101, size=(r, c))
         lbl_result.config(text=matrix)
     except ValueError as err:
-        #lbl_result.config(text=f"입력 값이 없습니다.\n{err}")
         messagebox.showerror('Error!', f"입력 값이 없습니다.\n{err}")
 
 
 window = tk.Tk()
-window.title('numpy gui version v1.5')
+window.title('numpy gui version v2.0')
 window.geometry('300x150')
 
 # create widget
