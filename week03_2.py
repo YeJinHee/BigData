@@ -8,7 +8,7 @@ from tkinter import messagebox  # pop-up window
 #     messagebox.showinfo('x, y', f"({ev.x}, {ev.y})")
 
 
-def click_button(*args): #가변매개변수 사용한 것
+def click_button(*args): #가변매개변수 사용한 것. 마우스 클릭해도 되고 엔터 눌러도 됨
     try:
         r, c = map(int, en_row_column.get().split())
         matrix = np.random.randint(1, 101, size=(r, c))
