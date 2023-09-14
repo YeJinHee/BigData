@@ -20,7 +20,7 @@ def click_button():
 
 
 window = tk.Tk()
-window.title('numpy gui version v1.1')
+window.title('numpy gui version v1.0')
 window.geometry('300x150')
 
 # create widget
