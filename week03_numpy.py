@@ -12,6 +12,7 @@ def click_button():
     except ValueError as err:
         lbl_result.config(text=f"입력값이 없습니다.\n(err)")
 
+
 window = tk.Tk() #여기서부터 프론트, 윈도우 생성자
 window.title('numpy gui version v0.7') #제목에 들어갈 거
 window.geometry('300x150') #수치 조절
@@ -23,11 +24,11 @@ btn_click = tk.Button(text="click me!", command=click_button) #위에 있는 클
 
 # widget layout
 lbl_result.pack()
-en_number.pack(fill='x')
-btn_click.pack(fill='x')
+en_number.pack(side='right')
+btn_click.pack(side='right')
+
+lbl_result.grid(row=0, column=0, columnspan=2)
+en_number.grid(row=1, column=0)
+btn_click.grid(row=1, column=1)
 
 window.mainloop() #아두이누 loop처럼 끊기기 전까지 계속 실행
-# n = int(input("input number : "))
-# l = [random.randint(1, 100) for i in range(n)]
-# v = np.array(l, dtype='int16')
-# print(v)
