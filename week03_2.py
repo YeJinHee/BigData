@@ -29,6 +29,7 @@ btn_click = tk.Button(text="click me!", command=click_button)
 
 #엔터 키 바인딩
 en_row_column.bind("<Return>", click_button)
+#btn_click.bind가 안 되는 이유 : 버튼 클릭 쪽이어서?
 
 # widget layout
 # lbl_result.grid(row=0, column=0, columnspan=2)
