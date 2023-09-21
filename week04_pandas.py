@@ -1,35 +1,39 @@
-import matplotlib.pyplot as plt
-# import numpy as np 없어도 됨
+# import matplotlib.pyplot as plt
 import pandas as pd
+import tkinter as tk
 from sklearn.linear_model import LinearRegression
 
-# Download and prepare the data loding
-data_root = "https://github.com/ageron/data/raw/main/"
-life_satisfaction = pd.read_csv(data_root + "lifesat/lifesat.csv")
-print(Llife_satisfaction.tail(5))
-print(Lifesat.shape)
-print(Lifesat.descibe(5))
 
- print)Lisear;
-X = lifesat[["GDP per capita (USD)"]].values #2차원 배열
-y = lifesat[["Life satisfaction"]].values
+def predict_life_satisfaction():
+    x = int(en_GDP_per_capita.get())
+    X_new = [[x]]
 
-print (x)
-print(y)
+    life_satisfaction = pd.read_csv("https://github.com/ageron/data/raw/main/lifesat/lifesat.csv")
+    X = life_satisfaction[["GDP per capita (USD)"]].values  # return 2d array
+    y = life_satisfaction[["Life satisfaction"]].values  # return 2d array
 
-# Visualize the data
-lifesat.plot(kind='scatter', grid=True,
-             x="GDP per capita (USD)", y="Life satisfaction")
-plt.axis([23_500, 62_500, 4, 9])
-plt.show()
+    # life_satisfaction.plot(kind='scatter', grid=True, x="GDP per capita (USD)", y="Life satisfaction")
+    # plt.axis([23500, 62500, 4, 9])
+    # plt.show()
 
-# Select a linear model
-model = LinearRegression()
+    model = LinearRegression()
+    model.fit(X, y)
 
-# Train the model
-model.fit(X, y)
+    # predict new GDP per capita (South Korea 2020)
+    lbl_life_satisfaction.config(text=f"해당 국가의 삶의 만족도는 {model.predict(X_new)}로 예상합니다.")
 
-# Make a prediction for Cyprus
-X_new = [[37_655.2]]  # Cyprus' GDP per capita in 2020
-print(life_satisfaction)
-print(model.predict(X_new)) # outputs [[6.30165767]]
+
+if __name__ == "__main__":
+    window = tk.Tk()
+    window.title("삶의 만족도 예측 프로그램 v0.1")
+    window.geometry("400x150")
+
+    lbl_life_satisfaction = tk.Label(window, text="아래 입력상자에 삶의 만족도를 알고 싶은\n국가의 1인당 GDP값을 입력해주세요")
+    en_GDP_per_capita = tk.Entry(window)
+    btn_predict = tk.Button(window, text="예측", command=predict_life_satisfaction)
+
+    lbl_life_satisfaction.pack()
+    en_GDP_per_capita.pack(fill='x')
+    btn_predict.pack(fill='x')
+
+    window.mainloop()
