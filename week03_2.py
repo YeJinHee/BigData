@@ -4,8 +4,8 @@ from tkinter import messagebox  # pop-up window
 
 
 # def press_enter_key(ev):
-#     click_button()
-#     messagebox.showinfo('x, y', f"({ev.x}, {ev.y})")
+# click_button()
+# messagebox.showinfo('x, y', f"({ev.x}, {ev.y})")
 
 
 def click_button(*args): #가변매개변수 사용한 것. 마우스 클릭해도 되고 엔터 눌러도 됨
@@ -15,8 +15,7 @@ def click_button(*args): #가변매개변수 사용한 것. 마우스 클릭해�
         lbl_result.config(text=matrix)
     except ValueError as err:
         messagebox.showerror('Error!', f"입력 값이 없습니다.\n{err}")
-
-
+        
 window = tk.Tk()
 window.title('numpy gui version v2.0')
 window.geometry('300x150')
