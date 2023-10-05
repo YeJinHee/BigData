@@ -20,7 +20,7 @@ def predict_life_satisfaction(*ev):
     # plt.axis([23500, 62500, 4, 9])
     # plt.show()
 
-    model = tglearn.KNeighborsRegressor(3)
+    model = tglearn.KNeighborsRegressor()  # default neighbor is 5
     #model = KNeighborsRegressor(3)
     model.fit(X, y)
 
@@ -41,6 +41,7 @@ if __name__ == "__main__":
     en_GDP_per_capita.pack(fill='x')
     btn_predict.pack(fill='x')
 
+    #디자인 추가
     en_GDP_per_capita.bind("<Return>", predict_life_satisfaction)
     en_GDP_per_capita.focus()
 
