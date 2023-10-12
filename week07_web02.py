@@ -5,11 +5,10 @@ api = 'https://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp'
 urls = urllib.request.urlopen(api).read()
 soup = BeautifulSoup(urls, 'html.parser')
 
-cities = soup.find_all("city") #기상청 거기선 도시가 city여서 city로 함
-wfs = soup.find_all("wf")
-wfs.pop(0)  # 성능 이슈 있을 수 있음
+cities = soup.find_all("city")
+data = soup.find_all("data")
 
 for i in range(len(cities)):
-    print(f'{cities[i].string}의 날씨는 {wfs[i*13].string}입니다.')
+    print(f'{cities[i].string}의 중기 예보 첫 번째 날씨는 {data[i*13].find("wf").string}입니다.')
 
-print(len(cities), len(wfs))
+print(len(cities), len(data))
