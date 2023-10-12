@@ -1,3 +1,5 @@
+#from bs4 import BeautifulSoup #bs4 다운 받을 때 alt+enter 눌러서 했었음
+
 import urllib.request
 import urllib.parse
 
