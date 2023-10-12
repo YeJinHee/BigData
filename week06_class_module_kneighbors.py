@@ -7,10 +7,10 @@ import tglearn
 
 def predict_life_satisfaction(*ev):
     x = int(en_GDP_per_capita.get())
-    X_new = [[x]]
+    X_new = [[x]] #2차원 배열에 저장
 
     life_satisfaction = pd.read_csv("https://github.com/ageron/data/raw/main/lifesat/lifesat.csv")
-    X = life_satisfaction[["GDP per capita (USD)"]].values  # return 2d array
+    X = life_satisfaction[["GDP per capita (USD)"]].values  # return 2d array, GDP 값 추출 후 x에 저장
     y = life_satisfaction[["Life satisfaction"]].values  # return 2d array
 
     # print(X)
@@ -20,9 +20,9 @@ def predict_life_satisfaction(*ev):
     # plt.axis([23500, 62500, 4, 9])
     # plt.show()
 
-    model = tglearn.KNeighborsRegressor()  # default neighbor is 5
+    model = tglearn.KNeighborsRegressor()  # default neighbor is 5, k-최근접 이웃 회귀 모델을 생성합니다.
     #model = KNeighborsRegressor(3)
-    model.fit(X, y)
+    model.fit(X, y) #학습시킴
 
     # predict new GDP per capita (South Korea 2020)
     lbl_life_satisfaction.config(text=f"해당 국가의 삶의 만족도는 {model.predict(X_new)}로 예상합니다.")
