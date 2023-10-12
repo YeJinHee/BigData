@@ -1,15 +1,20 @@
-import urllib.request
-import urllib.parse
+from bs4 import BeautifulSoup
 
-api : 'https://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp'
-
-station_id = input('지역코드 : ')
-values = {'stnId':station_id}
-parameters = urllib.parse.urlencode(values)
-url = api + '?' + parameters
-
-urls = urllib.request.urlopen(url).read()
-texts = urls.decode('utf-8')
-print(texts)
-
-# 다운로드를 하고 수집되는 데이터에 따라 출력?
+html = """
+<html>
+<head>
+<title>스크레이핑 실습</title>
+</head>
+<body>
+<h1>대림대학교</h1>
+<p>웹 스크레이핑</p>
+<p>파이썬 기본 문법, 넘파이, 판다스, 맷플롯립, 사이킷런, GUI ... </p>
+</body>
+</html>
+"""
+soup = BeautifulSoup(html, 'html.parser')
+t = soup.html.head.title
+h1 = soup.html.body.h1.string
+p1 = soup.html.body.p
+p2 = p1.next_sibling.next_sibling
+print(t, h1, p1, p2)
