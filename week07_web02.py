@@ -1,20 +1,15 @@
+import urllib.request
 from bs4 import BeautifulSoup
 
-html = """
-<html>
-<head>
-<title>스크레이핑 실습</title>
-</head>
-<body>
-<h1>대림대학교</h1>
-<p>웹 스크레이핑</p>
-<p>파이썬 기본 문법, 넘파이, 판다스, 맷플롯립, 사이킷런, GUI ... </p>
-</body>
-</html>
-"""
-soup = BeautifulSoup(html, 'html.parser')
-t = soup.html.head.title
-h1 = soup.html.body.h1.string
-p1 = soup.html.body.p
-p2 = p1.next_sibling.next_sibling
-print(t, h1, p1, p2)
+api = 'https://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp'
+urls = urllib.request.urlopen(api).read()
+soup = BeautifulSoup(urls, 'html.parser')
+
+cities = soup.find_all("city") #기상청 거기선 도시가 city여서 city로 함
+wfs = soup.find_all("wf")
+wfs.pop(0)  # 성능 이슈 있을 수 있음
+
+for i in range(len(cities)):
+    print(f'{cities[i].string}의 날씨는 {wfs[i*13].string}입니다.')
+
+print(len(cities), len(wfs))
