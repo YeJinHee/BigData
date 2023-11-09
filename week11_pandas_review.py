@@ -21,6 +21,10 @@ df2 = pd.DataFrame(
     columns=['KOR', 'ENG', 'MAT']
 )
 print(df2)
+
+#국어 성적과 영어 성적이 둘 다 95점 이상인 행을 추출
+print(df2.query('KOR>=95 and ENG>=95'))
+
 #첫 번째 학생의 수학 성적 출력
 print(df2.at[1, 'MAT'])#레이블로 가져오기
 print(df2.iat[0, 2])#인덱스로 가져오기
