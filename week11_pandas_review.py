@@ -21,6 +21,10 @@ df2 = pd.DataFrame(
     columns=['KOR', 'ENG', 'MAT']
 )
 print(df2)
+#첫 번째 학생의 수학 성적 출력
+print(df2.at[1, 'MAT'])#레이블로 가져오기
+print(df2.iat[0, 2])#인덱스로 가져오기
+
 #국어 수학 칼럼을 추출
 #조건은 국어가 95 이상이어야 함
 df2_copy = df2.loc[df2['KOR']>=95, ['KOR', 'MAT']]
