@@ -9,17 +9,12 @@ df = pd.DataFrame(
     columns=['KOR', 'ENG', 'MAT']
 )
 print(df)
-# 1번 학생의 수학 성적(100) 출력
-print(df.at[1, 'MAT'])
-#print(df.iat[1, 3])
-print(df.iat[0, 2])
-# 국어, 수학 칼럼을 추출
-# 조건은 국어 성적이 95점 이상인 경우
-df_copy = df.loc[df['KOR']>=95, ['KOR', 'MAT']]
-print(df_copy)
 
-def scale_score(n):
-    return n + 1
-
-df = df.apply(scale_score)
+df = df.apply(lambda n: n+1) #얘도 1점 추가함
 print(df)
+
+# def scale_score(n): #점수 조정 1점씩 추가
+#     return n + 1
+#
+# df = df.apply(scale_score)
+# print(df)
