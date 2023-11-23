@@ -3,7 +3,7 @@ import pandas as pd
 
 titanic = sns.load_dataset('titanic')
 
-print(titanic.isnull())
+print(titanic.isnull().sum())
 
 #print(titanic.head())
 #print(titanic.describe())
