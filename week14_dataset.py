@@ -1,3 +1,5 @@
+#로지스틱 회귀 모델 적용 및 학습
+
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
